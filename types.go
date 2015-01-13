@@ -2,6 +2,7 @@ package main
 
 import (
   "fmt"
+  "code.google.com/p/go-tour/pic"
 )
 
 type address struct {
@@ -19,6 +20,12 @@ var myAddress = address {
   "PA",
   19106,
 }
+
+type food struct {
+  name, ingredients string
+}
+
+var m map [string] food
 
 func smallIntArray () [3]int {
   var array [3]int
@@ -114,4 +121,13 @@ func moreTypes() {
 
   //Ranges
   forRange(append(s, 10, 2, 30, 4, 50, 6))
+  pic.Show(Pic)
+
+  // Maps.
+  m = make(map[string]food)
+  m["pizza"] = food {
+    "pizza",
+    "pepperoni",
+  }
+  fmt.Println(m)
 }
