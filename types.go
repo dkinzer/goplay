@@ -65,6 +65,19 @@ func forRange (s []int) {
   }
 }
 
+func Pic(dx, dy int) [][]uint8 {
+  xs := make([][]uint8, dx)
+  for x := range xs {
+    ys := make([]uint8, dy)
+    for y := range ys {
+      image := x ^ y
+      ys[y] = uint8(image)
+    }
+    xs[x] = ys
+  }
+  return xs
+}
+
 func moreTypes() {
   // Strucs
   fmt.Println("Hello Strucs!:")
