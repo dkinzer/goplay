@@ -30,7 +30,7 @@ func greaterThan (x, y int) bool {
 
 // variables inside of if statments are also availabe indie of blocks.
 func ifelse () string {
-  if name := "Olvia"; false {
+  if name := "Olivia"; false {
   } else {
     return name
   }
