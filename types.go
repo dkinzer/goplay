@@ -3,6 +3,7 @@ package main
 import (
   "fmt"
   "code.google.com/p/go-tour/pic"
+  "math"
   "strings"
 )
 
@@ -171,3 +172,9 @@ func moreTypes() {
   }
 }
 
+func hello () func(float64, float64) float64  {
+  f := func(x, y float64) float64 {
+    return math.Sqrt(x*x + y*y)
+  }
+  return f
+}
