@@ -3,6 +3,7 @@ package main
 import (
   "fmt"
   "code.google.com/p/go-tour/pic"
+  "strings"
 )
 
 type address struct {
@@ -85,6 +86,15 @@ func Pic(dx, dy int) [][]uint8 {
   return xs
 }
 
+func wordCount(s string) (m map[string]int) {
+  words := strings.Fields(s)
+  m = make(map[string]int)
+  for _, word := range words {
+    m[word] +=  1
+  }
+  return
+}
+
 func moreTypes() {
   // Strucs
   fmt.Println("Hello Strucs!:")
@@ -129,5 +139,35 @@ func moreTypes() {
     "pizza",
     "pepperoni",
   }
+
+  m["cheese"] = food {
+    "macaroni",
+    "cheese",
+  }
   fmt.Println(m)
+
+  z := make(map[string]int)
+  z["first"] = 1
+  z["second"] = 2
+  z["third"] = 3
+  fmt.Println(z)
+
+  var x = map[string]food {
+    "mac-and-cheese": {"mac", "cheese"},
+    "lemonade": {"lemon", "water"},
+  }
+  fmt.Println(x)
+
+  _, ok := z["third"]
+  if ok {
+    fmt.Println("third exists.")
+  }
+
+  delete(z, "third")
+  _, ok = z["third"]
+
+  if !ok {
+    fmt.Println("third does not exist.")
+  }
 }
+
