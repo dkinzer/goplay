@@ -24,7 +24,7 @@ func forall (x int) int {
 func greaterThan (x, y int) bool {
   if x > y {
     return true
-  } 
+  }
   return false
 }
 
@@ -37,9 +37,19 @@ func ifelse () string {
   return "Wrong"
 }
 
-func Sqrt(x float64) float64 {
+type ErrNegativeSqrt float64
+
+func (n ErrNegativeSqrt) Error() string {
+  return fmt.Sprintf("Cannot Sqrt negative number: %v", n)
+}
+
+func Sqrt(x float64) (float64, error) {
   sqrt := float64(3)
   delta := float64(1)
+
+  if x < 0 {
+    return 0, ErrNegativeSqrt(x)
+  }
 
   for delta > 0.0000000000001 {
     z := sqrt
@@ -47,7 +57,7 @@ func Sqrt(x float64) float64 {
     delta = math.Abs(sqrt - z)
   }
 
-  return sqrt
+  return sqrt, nil
 }
 
 // case body ends automatically unless it ends with a fallthrough
@@ -97,7 +107,6 @@ func stackDefer() {
 func flowControls() {
   fmt.Println (ifelse())
   fmt.Println(Sqrt(2))
-  fmt.Println(Sqrt(2) * Sqrt(2))
   fmt.Println(greet("Olivia"))
   fmt.Println(greet("Kirsten"))
   fmt.Println(greet("David"))
